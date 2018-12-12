@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class User {
@@ -13,10 +14,9 @@ public class User {
     private Long id ;
     private String name;
     private String email;
-    @ManyToOne
-    @JoinColumn(name = "partageList_id")
-    @JsonIgnore
-    private PartageList partageList ;
+    @ManyToMany
+
+    private List<PartageList> partageLists ;
 
 
 
@@ -52,21 +52,12 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public PartageList getPartageList() {
-        return partageList;
+
+    public List<PartageList> getPartageLists() {
+        return partageLists;
     }
 
-    public void setPartageList(PartageList partageList) {
-        this.partageList = partageList;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", partageList=" + partageList +
-                '}';
+    public void setPartageLists(List<PartageList> partageLists) {
+        this.partageLists = partageLists;
     }
 }

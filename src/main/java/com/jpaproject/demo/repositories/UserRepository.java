@@ -8,5 +8,5 @@ import java.util.Collection;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
-public Collection<User> findUsersByPartageListId(Long id);
+public Collection<User> findUsersByPartageListsId(Long id);
 }

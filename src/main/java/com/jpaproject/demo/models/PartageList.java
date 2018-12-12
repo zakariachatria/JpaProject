@@ -15,11 +15,10 @@ public class PartageList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private  String label ;
-    @OneToMany( mappedBy = "partageList")
+    @ManyToMany()
 
-    private Collection<User> usersList ;
-    @Transient
-    private List<UserInter> userInters;
+    private List<User> usersList ;
+
 
 
 
@@ -49,18 +48,12 @@ public class PartageList {
         this.label = label;
     }
 
-    public Collection<User> getUsersList() {
+    public List<User> getUsersList() {
         return usersList;
     }
 
-    public void setUsersList(Collection<User> usersList) {
+    public void setUsersList(List<User> usersList) {
         this.usersList = usersList;
     }
-    public Collection<UserInter> getUserInters() {
-        return userInters;
-    }
 
-    public void setUserInters(List<UserInter> userInters) {
-        this.userInters = userInters;
-    }
 }
