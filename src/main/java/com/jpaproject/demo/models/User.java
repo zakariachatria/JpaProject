@@ -14,9 +14,14 @@ public class User {
     private Long id ;
     private String name;
     private String email;
-    @ManyToMany
-
-    private List<PartageList> partageLists ;
+    private String password;
+    @ElementCollection(targetClass=String.class)
+    private Collection<String> roles;
+//    @ManyToMany
+//    @JoinTable(name = "user_partageList22", joinColumns = {
+//            @JoinColumn(name = "user", referencedColumnName = "id") }, inverseJoinColumns = {
+//                    @JoinColumn(name = "PartageList", referencedColumnName = "id") })
+//    private List<PartageList> partageLists ;
 
 
 
@@ -24,9 +29,11 @@ public class User {
 
     }
 
-    public User(String name, String email) {
+    public User(String name, String email, String password, List<String> roles) {
         this.name = name;
         this.email = email;
+        this.password = password;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -53,11 +60,27 @@ public class User {
         this.email = email;
     }
 
-    public List<PartageList> getPartageLists() {
-        return partageLists;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPartageLists(List<PartageList> partageLists) {
-        this.partageLists = partageLists;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+    public Collection<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<String> roles) {
+        this.roles = roles;
+    }
+
+    //    public List<PartageList> getPartageLists() {
+//        return partageLists;
+//    }
+//
+//    public void setPartageLists(List<PartageList> partageLists) {
+//        this.partageLists = partageLists;
+//    }
 }

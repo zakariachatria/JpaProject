@@ -9,4 +9,6 @@ import org.springframework.stereotype.Service;
 public interface UserService {
 public User getUser(Long id);
 public void saveUser(User user);
+public User getUserByName(String name);
+public void updateUser(Long id , String name);
 }

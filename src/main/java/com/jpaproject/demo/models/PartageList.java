@@ -1,12 +1,6 @@
 package com.jpaproject.demo.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -15,8 +9,16 @@ public class PartageList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private  String label ;
-    @ManyToMany()
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user ;
+
+   
+
+	@ManyToMany
+    @JoinTable(name = "partageList_user22", joinColumns = {
+            @JoinColumn(name = "PartageList", referencedColumnName = "id") }, inverseJoinColumns = {
+                    @JoinColumn(name = "user", referencedColumnName = "id") })
     private List<User> usersList ;
 
 
@@ -55,5 +57,13 @@ public class PartageList {
     public void setUsersList(List<User> usersList) {
         this.usersList = usersList;
     }
+    public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 }
